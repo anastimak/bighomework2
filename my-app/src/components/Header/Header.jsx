@@ -1,11 +1,12 @@
-function Header({ countInHeader, asdasd }) {
+import './header.css'
+
+function Header({ countInHeader }) {
 
     console.log('Header render');
   
     return (
       <>
-        <header>Header</header>
-        {asdasd}
+        <header className="wrapper">Header</header>
         <hr/>
         {countInHeader}
         <hr/>
