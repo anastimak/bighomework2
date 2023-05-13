@@ -5,15 +5,19 @@ import Main from './components/Main';
 import { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState(() => {
+    const todoList = localStorage.getItem(LS_TOKEN)
+
+    return todoList ? JSON.parse(todoList) : []
+  })
 
   console.log('APP render');
 
   return (
     <div className="App">
-      <Header />
-
-      <Main />
+      <Header addToList={addToList} />
+      
+      <Main todos={todos} deleteList={deleteList} deleteOneTodo={deleteOneTodo} />
 
       <Footer />
     </div>
