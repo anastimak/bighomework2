@@ -1,7 +1,9 @@
+import {} from './footer.module.css'
+
 export const Footer = () => {
     console.log('Footer render');
   
     return (
-      <footer>Footer</footer>
+      <footer className={styles['wrapper-knjasd']}>Footer</footer>
     )
   }

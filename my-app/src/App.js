@@ -11,9 +11,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header countInHeader={count} />
+      <Header />
 
-      <Main setCount={setCount} />
+      <Main />
 
       <Footer />
     </div>
