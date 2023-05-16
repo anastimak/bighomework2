@@ -1,7 +1,7 @@
 const Main = ({ todos, deleteList, deleteOneTodo }) => {
 
   if (!todos.length) {
-    return <p>TODO лист пока пуст...</p>
+    return <p>TODO лист</p>
   }
 
   return (
