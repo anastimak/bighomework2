@@ -9,6 +9,8 @@ import {
 import { Catalog } from './components/Catalog';
 import { Home } from './pages/Home/index';
 import { User } from './pages/User/index';
+import { SignIn } from './pages/SignIn/index';
+import { SignUp } from './pages/SignUp/index';
 
 const router = createBrowserRouter([
   {
