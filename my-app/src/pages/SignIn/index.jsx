@@ -3,16 +3,12 @@ import * as Yup from 'yup';
 
 export const SignIn = () => {
 
-    const signupSchema = Yup.object().shape({
-        firstName: Yup.string()
-            .min(2, 'Too Short!')
-            .max(50, 'Too Long!')
-            .required('Required'),
-        lastName: Yup.string()
-            .min(2, 'Too Short!')
-            .max(50, 'Too Long!')
-            .required('Required'),
-        email: Yup.string().email('Invalid email').required('Required'),
+    const signInSchema = Yup.object().shape({
+        password: Yup.string()
+            .min(5, 'Слишком короткий!')
+            .max(50, 'Слишком длинный!')
+            .required('Обязательное поле'),
+        email: Yup.string().email('Некорректный email').required('Обязательное поле'),
         });
  
     const initialValues = {
@@ -20,15 +16,17 @@ export const SignIn = () => {
         password: '',
     }
 
+    const onSubmit = (values) => {
+        console.log(values);
+    }
+
     return(
         <>
         <h1>Авторизация</h1>
         <Formik
-      initialValues={initialValues}
-      onSubmit={async (values) => {
-        await new Promise((r) => setTimeout(r, 500));
-        alert(JSON.stringify(values, null, 2));
-      }}
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={signInSchema}
         >
         <Form>
             <Field
