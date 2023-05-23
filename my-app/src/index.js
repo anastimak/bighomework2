@@ -6,17 +6,49 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { Catalog } from './components/Catalog';
+import { Home } from './pages/Home/index';
+import { User } from './pages/User/index';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Home />
+      },
+      {
+        path: 'products',
+        element: <Catalog />
+      },
+      {
+        path: 'user/me',
+        element: <User />
+      },
+      // Страницы авторизации SignIn и SignUp
+      {
+        path: '/signin',
+        element: <SignIn />
+      },
+      {
+        path: '/signup',
+        element: <SignUp />
+      }
+      // Детальная страница с товарами
+      //{
+      //  path: 'products/:idOfProduct',
+      //  element: <CurrentProduct />
+      //}
+    ]
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
+    {/*<App /> */}
   </React.StrictMode>
 );
