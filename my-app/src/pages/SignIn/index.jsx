@@ -1,4 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { useState } from 'react';
 import * as Yup from 'yup';
 
 export const SignIn = () => {
@@ -15,8 +16,11 @@ export const SignIn = () => {
         email: '',
         password: '',
     }
-
+    const [error, setError] = useState(false)
+    
     const onSubmit = async (values) => {
+        setError(false)
+
         const res = await fetch('https://api.react-learning.ru/signin', {
             method: 'POST',
             headers: {
@@ -25,11 +29,13 @@ export const SignIn = () => {
             body: JSON.stringify(values)
         })
         const responce = await res.json()
-        console.log(responce);
 
         if(res.ok) {
             //responce.token
+            return
         }
+
+        return setError(responce.message)
     }
 
     return(
@@ -54,6 +60,8 @@ export const SignIn = () => {
             <Field name="password" placeholder="Пароль" type="password" />
             <ErrorMessage name="password" component='p' className='warning' />
             </div>
+
+            {error && <p className='warning'>{error}</p>}
 
             <button type="submit">Войти</button>
         </Form>
