@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchProducts } from "../../api/products";
 import { AUTH_DOG_TOKEN } from "../../utils/constants";
 import { ProductCard } from "../ProductCard";
 
@@ -15,12 +16,7 @@ export const Catalog = () => {
   // сначала нужно получить данные
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://api.react-learning.ru/products", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetchProducts(token)
       const res = await response.json();
 
       setData(res);

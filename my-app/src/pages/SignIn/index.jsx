@@ -2,6 +2,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { fetchAuth } from '../../api/user';
 import { AUTH_DOG_TOKEN } from '../../utils/constants';
 
 export const SignIn = () => {
@@ -31,13 +32,7 @@ export const SignIn = () => {
     const onSubmit = async (values) => {
         setError(false)
 
-        const res = await fetch('https://api.react-learning.ru/signin', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(values)
-        })
+        const res = await fetchAuth(values)
         const responce = await res.json()
 
         if(res.ok) {
