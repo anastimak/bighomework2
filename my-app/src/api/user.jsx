@@ -5,3 +5,11 @@ export const fetchAuth = (values) => fetch('https://api.react-learning.ru/signin
   },
   body: JSON.stringify(values)
 })
+
+export const fetchInfoAboutMe = (token) => {
+  return fetch('https://api.react-learning.ru/v2/group-11/users/me', {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+}
