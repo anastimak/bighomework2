@@ -1,6 +1,8 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { AUTH_DOG_TOKEN } from '../../utils/constants';
 
 export const SignIn = () => {
 
@@ -17,7 +19,9 @@ export const SignIn = () => {
         password: '',
     }
     const [error, setError] = useState(false)
-    
+
+    const navigate = useNavigate()
+
     const onSubmit = async (values) => {
         setError(false)
 
@@ -31,8 +35,8 @@ export const SignIn = () => {
         const responce = await res.json()
 
         if(res.ok) {
-            //responce.token
-            return
+            localStorage.setItem(AUTH_DOG_TOKEN, responce.token)
+            return navigate('/products')
         }
 
         return setError(responce.message)
@@ -64,6 +68,9 @@ export const SignIn = () => {
             {error && <p className='warning'>{error}</p>}
 
             <button type="submit">Войти</button>
+            <p>Еще не зарегистрированы? 
+                <button onClick={() => navigate('/signup')} type="submit">Регистрация</button>
+            </p>
         </Form>
         </Formik>
         </>

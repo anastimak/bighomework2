@@ -1,1 +1,3 @@
 export const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDEwN2UwOWFhMzk3MTIxODM4ZjI4ZTIiLCJncm91cCI6Imdyb3VwLTExIiwiaWF0IjoxNjc4ODAyNDQ2LCJleHAiOjE3MTAzMzg0NDZ9.xye1C0_z1We8aNhbpG6O6JbFbwliJg-LAUtSMikLfJw'
+
+export const AUTH_DOG_TOKEN = 'auth_dog_token'
