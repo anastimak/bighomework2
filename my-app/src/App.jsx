@@ -1,14 +1,16 @@
 import './App.css';
 import { Header } from './layout/Header';
 import { Footer } from './layout/Footer'
-import { Catalog } from './components/Catalog';
+import { Outlet } from 'react-router-dom';
 
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Catalog />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
