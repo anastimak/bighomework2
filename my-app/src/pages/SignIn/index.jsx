@@ -1,5 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { AUTH_DOG_TOKEN } from '../../utils/constants';
@@ -21,6 +21,12 @@ export const SignIn = () => {
     const [error, setError] = useState(false)
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const token = localStorage.getItem(AUTH_DOG_TOKEN)
+    
+        if (token) return navigate('/products')
+      }, [navigate])    
 
     const onSubmit = async (values) => {
         setError(false)
