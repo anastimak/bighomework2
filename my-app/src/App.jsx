@@ -1,5 +1,5 @@
 import './App.css';
-import { Header } from './layout/Header/';
+import { Header } from './layout/Header';
 import { Footer } from './layout/Footer'
 import { Catalog } from './components/Catalog';
 
