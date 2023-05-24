@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
-import { TOKEN } from "../../utils/constants";
+import { useNavigate } from "react-router-dom";
+import { AUTH_DOG_TOKEN, TOKEN } from "../../utils/constants";
 import { ProductCard } from "../ProductCard";
 
 export const Catalog = () => {
   const [data, setData] = useState({ total: 0, products: [] });
+
+  const navigate = useNavigate()
+    useEffect(() => {
+        const token = localStorage.getItem(AUTH_DOG_TOKEN)
+    
+        if (token) return navigate('/signin')
+      }, [navigate])
 
   // сначала нужно получить данные
   useEffect(() => {

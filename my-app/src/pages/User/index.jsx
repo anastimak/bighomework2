@@ -8,7 +8,7 @@ export const User = () => {
     useEffect(() => {
         const token = localStorage.getItem(AUTH_DOG_TOKEN)
     
-        if (token) return navigate('/products')
+        if (token) return navigate('/signin')
       }, [navigate])
 
     return(
